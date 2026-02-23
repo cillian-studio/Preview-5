@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="de" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blaue Blunz'n | Essen bei Freunden in Mödling</title>
+    <meta name="description"
+        content="Echte österreichische Hausmannskost in Mödling. Blunzengröstl, Wiener Schnitzel & mehr – seit Jahren der Treffpunkt für Liebhaber der Wiener Küche.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --wine: #6B1A2A;
+            --wine-deep: #4A1019;
+            --wine-light: #8B2940;
+            --cream: #FAF6F0;
+            --cream-warm: #F5EDE0;
+            --linen: #EDE6D8;
+            --charcoal: #1A1A1A;
+            --text: #2D2926;
+            --text-light: #6B635C;
+            --gold: #C9A84C;
+            --gold-soft: #D4B968;
+            --wood: #3E2B1C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .handwritten {
+            font-family: 'Caveat', cursive;
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 246, 240, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(107, 26, 42, 0.08);
+            transition: box-shadow 0.3s;
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--wine);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            font-family: 'Caveat', cursive;
+            font-size: 0.75rem;
+            display: block;
+            color: var(--text-light);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-top: -4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--wine);
+        }
+
+        .nav-cta {
+            background: var(--wine) !important;
+            color: #fff !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.04em;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--wine-deep) !important;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 6rem 1.5rem 4rem;
+            background: var(--charcoal);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(180deg, rgba(26, 26, 26, 0.4) 0%, rgba(26, 26, 26, 0.2) 40%, rgba(26, 26, 26, 0.82) 100%),
+                url('hf_20260223_113929_bdd25768-615d-4e32-aa33-330e7d22becc.png');
+            background-size: cover;
+            background-position: center 60%;
+            filter: saturate(0.85) contrast(1.05);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center bottom, rgba(107, 26, 42, 0.25) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+
+        .hero-handwritten {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-soft);
+            font-weight: 700;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.7;
+            max-width: 540px;
+            margin: 0 auto 2rem;
+            font-weight: 400;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            animation: fadeUp 0.8s 0.6s forwards;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.7s forwards;
+        }
+
+        .hero-hours {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.75s forwards;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.9s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.25s;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary {
+            background: var(--wine);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--wine-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(107, 26, 42, 0.3);
+        }
+
+        .btn-ghost {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.4);
+            animation: bobble 2.5s infinite;
+        }
+
+        /* ─── BANNER ─── */
+        .banner {
+            background: var(--wine);
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255, 255, 255, 0.03) 20px, rgba(255, 255, 255, 0.03) 40px);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner strong {
+            color: var(--gold-soft);
+        }
+
+        /* ─── SECTION SHARED ─── */
+        .section {
+            padding: 6rem 1.5rem;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--wine);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-annotation {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--wine-light);
+            margin-top: -0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── ABOUT ─── */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img-wrap {
+            position: relative;
+        }
+
+        .about-img {
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 12px 12px 0 var(--linen), 12px 12px 0 1px rgba(107, 26, 42, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.85);
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(107, 26, 42, 0.12);
+            border-radius: 12px;
+        }
+
+        .about-sticker {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 110px;
+            height: 110px;
+            background: var(--wine);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            line-height: 1.2;
+            transform: rotate(12deg);
+            box-shadow: 0 4px 16px rgba(107, 26, 42, 0.3);
+            z-index: 2;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+        }
+
+        .about-text p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.5rem;
+            margin-top: 0.15rem;
+            color: var(--wine);
+            font-weight: 700;
+        }
+
+        .about-faktum {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .about-faktum-item {
+            text-align: center;
+        }
+
+        .about-faktum-item .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--wine);
+            line-height: 1;
+        }
+
+        .about-faktum-item .label {
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .about-signature {
+            margin-top: 2rem;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: var(--wine);
+        }
+
+        /* ─── FOOD GALLERY ─── */
+        .food-section {
+            background: var(--linen);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .food-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 30 L42 45 L30 36 L18 45 L22 30 L10 20 L25 20 Z' fill='none' stroke='%236B1A2A' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .food-card {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .food-card-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: #fff;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+        }
+
+        /* ─── DAILY SPECIAL ─── */
+        .daily-card {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--cream);
+            border: 2px solid var(--wine);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .daily-card::before {
+            content: '✦';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: var(--wine);
+            background: var(--cream);
+            padding: 0 0.75rem;
+        }
+
+        .daily-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: var(--wine);
+            margin-bottom: 0.5rem;
+        }
+
+        .daily-dish {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .daily-desc {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .daily-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--wine);
+        }
+
+        .daily-note {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        /* ─── HIGHLIGHTS ─── */
+        .highlights {
+            background: var(--wood);
+            color: #fff;
+            position: relative;
+        }
+
+        .highlights .section-label {
+            color: var(--gold);
+        }
+
+        .hl-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .hl-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .hl-card:hover {
+            background: rgba(255, 255, 255, 0.09);
+            transform: translateY(-4px);
+            border-color: rgba(201, 168, 76, 0.25);
+        }
+
+        .hl-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hl-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .hl-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .hl-card .handwritten {
+            color: var(--gold-soft);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        /* ─── SPEISEKARTE ─── */
+        .menu {
+            background: var(--cream-warm);
+            position: relative;
+        }
+
+        .menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, var(--wine) 0, var(--wine) 8px, transparent 8px, transparent 16px);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            margin-top: 3rem;
+        }
+
+        .menu-category h3 {
+            font-size: 1.6rem;
+            color: var(--wine);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--wine);
+            margin-bottom: 1.75rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.75rem;
+        }
+
+        .menu-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .menu-item-row::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px dotted rgba(0, 0, 0, 0.15);
+            margin-bottom: 0.3em;
+            order: 2;
+        }
+
+        .menu-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            white-space: nowrap;
+            order: 1;
+        }
+
+        .menu-price {
+            font-weight: 700;
+            color: var(--wine);
+            font-size: 1.05rem;
+            white-space: nowrap;
+            order: 3;
+        }
+
+        .menu-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            line-height: 1.5;
+        }
+
+        .menu-tipp {
+            display: inline-block;
+            background: var(--wine);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .menu-note {
+            margin-top: 3rem;
+            padding: 1.5rem 2rem;
+            background: rgba(107, 26, 42, 0.06);
+            border-left: 3px solid var(--wine);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* ─── BEWERTUNGEN ─── */
+        .bewertungen {
+            background: var(--cream);
+        }
+
+        .gb-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gb-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .gb-card::before {
+            content: '„';
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--wine);
+            opacity: 0.15;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .gb-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .gb-author {
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            color: var(--wine);
+        }
+
+        .gb-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* ─── CONTACT ─── */
+        .contact {
+            background: var(--charcoal);
+            color: #fff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-block h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: border-color 0.2s;
+        }
+
+        .contact-info a:hover {
+            border-color: var(--gold);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 1.05rem;
+        }
+
+        .hours-row span:first-child {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .hours-closed {
+            color: var(--wine-light) !important;
+            font-weight: 600;
+        }
+
+        .hours-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .contact-handwritten {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--gold-soft);
+            margin-top: 1.5rem;
+        }
+
+        /* ─── MAP ─── */
+        .map-wrapper {
+            margin-top: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            height: 300px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: saturate(0.8) brightness(0.85);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: #111;
+            color: rgba(255, 255, 255, 0.35);
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* ─── MOBILE CTA ─── */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0.75rem;
+            background: rgba(250, 246, 240, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .mobile-cta a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            background: var(--wine);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+            color: var(--text);
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bobble {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s, transform 0.7s;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: rgba(250, 246, 240, 0.98);
+                backdrop-filter: blur(16px);
+                padding: 1.5rem 2rem 2rem;
+                gap: 1.25rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-img {
+                aspect-ratio: 16/10;
+            }
+
+            .about-sticker {
+                width: 90px;
+                height: 90px;
+                font-size: 0.85rem;
+                top: -15px;
+                right: -10px;
+            }
+
+            .hl-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .gb-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-cta {
+                display: block;
+            }
+
+            .section {
+                padding: 4rem 1.25rem;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .daily-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                Blaue Blunz'n
+                <span>Gasthaus in Mödling</span>
+            </a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"
+                aria-label="Menü">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <div class="nav-links">
+                <a href="#philosophie">Über uns</a>
+                <a href="#speisekarte">Speisekarte</a>
+                <a href="#bewertungen">Bewertungen</a>
+                <a href="#kontakt">Kontakt</a>
+                <a href="tel:+432236866464" class="nav-cta">02236 866 464</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-handwritten">Gastgarten is offen — kommt's raus!</p>
+            <h1>Blaue<br><em>Blunz'n.</em></h1>
+            <p class="hero-sub">Gemütlich draußen sitzen, a kaltes Bier, dazu an Schweinsbraten oder a Schnitzerl. Mehr
+                braucht's ned.</p>
+            <div class="hero-divider"></div>
+            <p class="hero-hours">Mi–Sa ab 11 Uhr · So Frühschoppen ab 11 Uhr · Mödling</p>
+            <div class="hero-btns">
+                <a href="#speisekarte" class="btn btn-primary">Speisekarte</a>
+                <a href="tel:+432236866464" class="btn btn-ghost">Reservieren: 02236 866 464</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M12 5v14m0 0l-5-5m5 5l5-5" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="banner-content">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="2" style="vertical-align:-2px;margin-right:4px;"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2.5 7-4.5 9-8 1.5 3.5 2 6 2 9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8c5-2 8-5 9-8-3 1-6 4-8 9" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Gastgarten jetzt offen!</strong> — <span class="handwritten">Die schönsten Plätze im
+                Freien.</span> Reservierung empfohlen.
+        </div>
+    </div>
+
+    <!-- Über uns -->
+    <section id="philosophie" class="section about">
+        <div class="section-inner about-grid">
+            <div class="about-img-wrap reveal">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1634029859598-4b6bbd957dbd?q=80&w=800&auto=format&fit=crop"
+                        alt="Schweinsbraten auf dem Teller" loading="lazy">
+                </div>
+                <div class="about-sticker">Seit vielen<br>Jahren!</div>
+            </div>
+            <div class="about-text reveal">
+                <span class="section-label">Wer mir san</span>
+                <h2 class="section-title">A Wirtshaus.<br>Ka Lokal.</h2>
+                <p class="section-annotation handwritten">...weil's an Unterschied gibt</p>
+                <p>Die Blunz'n gibt's jetzt seit über 15 Jahren. Angfangen hat's klein, geblieben is' die Liebe zum
+                    guten Essen. Wir kaufen regional ein, kochen alles selber und portionieren so, dass keiner hungrig
+                    heimgeht.</p>
+                <p>Hier sitzen der Bankdirektor neben dem Installateur. Hier wird g'redet, g'lacht und manchmal a
+                    bisserl z'viel g'trunken. Genau so soll a Wirtshaus sein.</p>
+                <div class="about-faktum">
+                    <div class="about-faktum-item">
+                        <div class="number">15+</div>
+                        <div class="label">Jahre Wirtshaus</div>
+                    </div>
+                    <div class="about-faktum-item">
+                        <div class="number">∞</div>
+                        <div class="label">Schnitzel gebraten</div>
+                    </div>
+                    <div class="about-faktum-item">
+                        <div class="number">1</div>
+                        <div class="label">Devise: Ehrlich.</div>
+                    </div>
+                </div>
+                <p class="about-signature">— Fam. Reisner &amp; Team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gerichte-Galerie + Tagesempfehlung -->
+    <section class="section food-section">
+        <div class="section-inner" style="text-align:center; margin-bottom:2rem;">
+            <span class="section-label">Aus der Küch'n</span>
+            <h2 class="section-title">So schaut's am Teller aus.</h2>
+        </div>
+        <div class="section-inner">
+            <div class="food-grid">
+                <div class="food-card reveal">
+                    <img src="https://images.unsplash.com/photo-1599921841143-819065a55cc6?q=80&w=600&auto=format&fit=crop"
+                        alt="Wiener Schnitzel goldgelb gebacken" loading="lazy">
+                    <div class="food-card-label">Wiener Schnitzel</div>
+                </div>
+                <div class="food-card reveal">
+                    <img src="https://images.unsplash.com/photo-1634029859598-4b6bbd957dbd?q=80&w=600&auto=format&fit=crop"
+                        alt="Schweinsbraten mit Knödeln" loading="lazy">
+                    <div class="food-card-label">Schweinsbraten</div>
+                </div>
+                <div class="food-card reveal">
+                    <img src="https://images.unsplash.com/photo-1628412277659-b4bb70d40b7c?q=80&w=600&auto=format&fit=crop"
+                        alt="Kaiserschmarrn mit Zwetschkenröster" loading="lazy">
+                    <div class="food-card-label">Kaiserschmarrn</div>
+                </div>
+            </div>
+        </div>
+        <div class="section-inner">
+            <div class="daily-card reveal">
+                <p class="daily-label">Heut' empfiehlt der Chef</p>
+                <h3 class="daily-dish">Gebratene Kalbsleber</h3>
+                <p class="daily-desc">zart rosa gebraten, mit karamellisierten Zwiebeln und Erdäpfelpüree</p>
+                <div class="daily-price">14,90 €</div>
+                <p class="daily-note">So lang' der Vorrat reicht. Tagesgericht wechselt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="section highlights">
+        <div class="section-inner" style="text-align:center; position:relative;">
+            <span class="section-label">Drei Sachen</span>
+            <h2 class="section-title" style="color:#fff;">Die bei uns fix passen.</h2>
+        </div>
+        <div class="section-inner">
+            <div class="hl-grid">
+                <div class="hl-card reveal">
+                    <span class="hl-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11v1a7 7 0 0014 0v-1M8 8V6m4-2v4m4-2v2"/></svg></span>
+                    <h3>Frisch. Alles.</h3>
+                    <p>Ka Fertigzeug, ka Mikrowelle. Wir kochen alles selber — Gulaschsaft, Apfelkren, Semmelknödel.
+                        Alles.</p>
+                    <span class="handwritten">„Schmeckt man halt"</span>
+                </div>
+                <div class="hl-card reveal">
+                    <span class="hl-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8M12 2v2m0 16v2M7 10h2l1-6h4l1 6h2M7 10a5 5 0 005 5 5 5 0 005-5M12 15v5"/></svg></span>
+                    <h3>Bier &amp; Wein</h3>
+                    <p>Gezapft, kalt, richtig. Dazu Weine aus Gumpoldskirchen und natürlich a g'spritzter Weißer wenns
+                        warm is'.</p>
+                    <span class="handwritten">„A Krügerl bitte!"</span>
+                </div>
+                <div class="hl-card reveal">
+                    <span class="hl-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+                    <h3>Ruhig sitzen bleiben</h3>
+                    <p>Kein Stress, kein Rausschmeißen. Bei uns darf man nach dem Essen noch sitzen, reden, trinken. So
+                        lang man will.</p>
+                    <span class="handwritten">„Geht's euch gut? Passt."</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speisekarte -->
+    <section id="speisekarte" class="section menu">
+        <div class="section-inner" style="text-align:center;">
+            <span class="section-label">Speisekarte</span>
+            <h2 class="section-title">Aus unserer Küch'n.</h2>
+            <p class="section-annotation handwritten">Alle Preise inkl. MwSt. · Saisonale Änderungen vorbehalten</p>
+        </div>
+        <div class="section-inner">
+            <div class="menu-grid">
+                <div class="menu-category reveal">
+                    <h3>Wirtshaus-Klassiker</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Original Blunzengröstl <span class="menu-tipp">Hausspezialität</span></h4>
+                            <span class="menu-price">16,90 €</span>
+                        </div>
+                        <p class="menu-desc">mit gerösteten Erdäpfeln, Krautsalat &amp; Kren</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Knoblauch-Schweinsbraten</h4>
+                            <span class="menu-price">19,90 €</span>
+                        </div>
+                        <p class="menu-desc">mit dreierlei Knödeln und Speck-Krautsalat</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Geröstete Leber Wiener Art</h4>
+                            <span class="menu-price">15,90 €</span>
+                        </div>
+                        <p class="menu-desc">mit Zwiebeln, Majoran und Butterreis</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Tafelspitz <span class="menu-tipp">Unser Liebling</span></h4>
+                            <span class="menu-price">22,90 €</span>
+                        </div>
+                        <p class="menu-desc">mit Rösterdäpfeln, Schnittlauchsauce &amp; Apfelkren</p>
+                    </div>
+                </div>
+
+                <div class="menu-category reveal">
+                    <h3>Aus der Pfanne</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Wiener Schnitzel vom Schwein</h4>
+                            <span class="menu-price">15,90 €</span>
+                        </div>
+                        <p class="menu-desc">goldgelb gebacken, mit Erdäpfelsalat</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Cordon Bleu</h4>
+                            <span class="menu-price">17,90 €</span>
+                        </div>
+                        <p class="menu-desc">vom Schwein, gefüllt mit Schinken und Käse</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Backhendl</h4>
+                            <span class="menu-price">16,90 €</span>
+                        </div>
+                        <p class="menu-desc">knusprig gebacken, mit Vogerlsalat und steirischem Kürbiskernöl</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <h4>Kaiserschmarrn</h4>
+                            <span class="menu-price">13,90 €</span>
+                        </div>
+                        <p class="menu-desc">flaumig, mit Rosinen und Zwetschkenröster</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-note reveal">
+                <strong>Hinweis:</strong> Karte wechselt saisonal. Tagesgerichte stehen auf der Tafel. Allergiker-Infos?
+                Einfach fragen.
+            </div>
+        </div>
+    </section>
+
+    <!-- Bewertungen -->
+    <section id="bewertungen" class="section bewertungen">
+        <div class="section-inner" style="text-align:center;">
+            <span class="section-label">Bewertungen</span>
+            <h2 class="section-title">Was andere sagen.</h2>
+        </div>
+        <div class="section-inner">
+            <div class="gb-grid">
+                <div class="gb-card reveal">
+                    <div class="gb-stars">★★★★★</div>
+                    <p class="gb-text">Gehen seit Jahren dort essen. Blunzengröstl bestellen, nie enttäuscht worden.</p>
+                    <p class="gb-author">— M. Steiner, Mödling</p>
+                </div>
+                <div class="gb-card reveal">
+                    <div class="gb-stars">★★★★★</div>
+                    <p class="gb-text">A Wirtshaus wie früher. Bedienung super, Portionen riesig, Preis fair. Was will
+                        man mehr.</p>
+                    <p class="gb-author">— K. Gruber, Stammgast</p>
+                </div>
+                <div class="gb-card reveal">
+                    <div class="gb-stars">★★★★★</div>
+                    <p class="gb-text">Schweinsbraten top. Gastgarten im Sommer super. Kinder können auch im Garten
+                        spielen.</p>
+                    <p class="gb-author">— Sandra K., Google-Bewertung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="section contact">
+        <div class="section-inner" style="text-align:center;">
+            <span class="section-label" style="color:var(--gold);">Besuchen Sie uns</span>
+            <h2 class="section-title" style="color:#fff;">Wo &amp; Wann.</h2>
+        </div>
+        <div class="section-inner">
+            <div class="contact-grid">
+                <div class="contact-block reveal">
+                    <h3>Adresse</h3>
+                    <div class="contact-info">
+                        <p>
+                            <strong style="color:#fff;">Blaue Blunz'n OG</strong><br>
+                            Wiener Straße 29<br>
+                            2340 Mödling
+                        </p>
+                        <p style="margin-top:1.25rem;">
+                            Telefon: <a href="tel:+432236866464">02236 866 464</a><br>
+                            E-Mail: <a href="mailto:office@blaueblunzn.at">office@blaueblunzn.at</a>
+                        </p>
+                        <p class="contact-handwritten">Parkplätze ums Eck vorhanden.</p>
+                    </div>
+                </div>
+                <div class="contact-block reveal">
+                    <h3>Öffnungszeiten</h3>
+                    <div>
+                        <div class="hours-row">
+                            <span>Montag &amp; Dienstag</span>
+                            <span class="hours-closed">Ruhetag</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Mittwoch – Samstag</span>
+                            <span style="color:#fff; font-weight:600;">11:00 – 23:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Sonntag</span>
+                            <span style="color:#fff; font-weight:600;">11:00 – 15:00</span>
+                        </div>
+                        <p class="hours-note">Warme Küche: Mi–Sa bis 21:30, So bis 14:30 Uhr.</p>
+                        <p class="contact-handwritten">Sonntag = Frühschoppen</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-wrapper reveal">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2664.0!2d16.2878!3d48.0856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da81e5e0e3c0f%3A0x0!2sWiener%20Stra%C3%9Fe%2029%2C%202340%20M%C3%B6dling!5e0!3m2!1sde!2sat!4v1"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Standort der Blauen Blunz'n in Mödling">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">Blaue Blunz'n</div>
+        <p style="font-size:0.9rem; color:rgba(255,255,255,0.4); margin-bottom:1rem;">Gasthaus in Mödling.</p>
+        <p>&copy; 2025 Blaue Blunz'n OG &nbsp;·&nbsp; Wiener Straße 29, 2340 Mödling &nbsp;·&nbsp; <a
+                href="tel:+432236866464">02236 866 464</a></p>
+        <div class="footer-bottom">
+            <p><a href="#">Impressum</a> &nbsp;·&nbsp; <a href="#">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA -->
+    <div class="mobile-cta">
+        <a href="tel:+432236866464">Jetzt anrufen &amp; reservieren</a>
+    </div>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
